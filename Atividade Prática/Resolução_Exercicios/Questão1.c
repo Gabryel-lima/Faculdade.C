@@ -10,10 +10,9 @@ struct Estudante {
     int ru;
 };
 
-void ValidaImpar(struct Estudante *referencia) {
+void ValidaImpar(struct Estudante *ref) {
     setlocale(LC_ALL, "Portuguese");
-
-    if (referencia->ru % 2 == 0) {
+    if (ref->ru % 2 == 0) {
         wprintf(L"\n->O RU é par!");
     }
     else {
@@ -21,20 +20,23 @@ void ValidaImpar(struct Estudante *referencia) {
     }
 }
 
-void ValidaNome(struct Estudante *referencia) {
+void ValidaNome(struct Estudante *ref) {
     printf("->Escreva seu nome: ");
-    scanf("%s", &referencia->nome);
+    fgets(ref->nome, MAX_NOME, stdin);
 }
 
-void ValidaRu(struct Estudante *referencia) {
+void ValidaRu(struct Estudante *ref) {
     printf("->Digite seu RU: ");
-    scanf("%d", &referencia->ru);
+    scanf("%d", &ref->ru);
 }
 
-void InverteNome(struct Estudante *referencia) {
-    #include <string.h>
-    strrev(referencia->nome);
-    printf("\n->Nome invertido: %s\n", referencia->nome);
+void InverteNome(struct Estudante *ref) {
+    size_t length = strlen(ref->nome);
+    if (length > 0 && ref->nome[length - 1] == '\n') {
+        ref->nome[length - 1] = '\0';
+    }
+    strrev(ref->nome);
+    printf("\n->Nome invertido: %s\n", ref->nome);
 }
 
 void ConstroiMenu() {
@@ -49,7 +51,8 @@ void ConstroiMenu() {
     printf("******************************\n");
 }
 
-int main() {
+void Run() {
+
     struct Estudante referencia;
 
     ConstroiMenu();
@@ -57,6 +60,35 @@ int main() {
     ValidaRu(&referencia);
     ValidaImpar(&referencia);
     InverteNome(&referencia);
+}
+
+int main() {
+    Run();
 
     return 0;
 }
+
+/**
+ * Inverte o nome de um estudante e imprime o resultado.
+ *
+ * Esta função inverte o nome armazenado na estrutura Estudante referenciada
+ * por 'ref' e imprime o nome invertido no console.
+ *
+ * //@param ref Um ponteiro para a estrutura Estudante contendo o nome a ser invertido.
+ */
+//void InverteNome(struct Estudante *ref) {
+    // Calcula o comprimento atual da string nome.
+    //size_t length = strlen(ref->nome);
+    
+    // Verifica se o último caractere é um '\n' (caractere de nova linha).
+    //if (length > 0 && ref->nome[length - 1] == '\n') {
+        // Se for, substitui o '\n' por '\0' (caractere nulo) para remover o '\n'.
+        //ref->nome[length - 1] = '\0';
+    //}
+    
+    // Chama a função strrev para inverter a string nome.
+    //strrev(ref->nome);
+    
+    // Imprime o nome invertido no console.
+    //printf("\n->Nome invertido: %s\n", ref->nome);
+//}
