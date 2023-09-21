@@ -12,8 +12,8 @@ int main() {
     //ponteiro armazena o endereço de memória alocado
 
     if (ponteiro==NULL) { //testando retorno
-       printf ("Memória insuficiente");
-       exit(1); //fim da função main()
+        printf ("Memória insuficiente");
+        exit(1); //fim da função main()
     } 
 
     printf("\nPopulando o vetor:");

@@ -1,32 +1,43 @@
 
 #include <stdio.h>
 #include <locale.h>
+#include <string.h>
 
-int print() {
-    setlocale(LC_ALL, "Portuguese");
-    //wprintf(L"");
-
-    return 0;
-}; //print;
+#define MAX_NOME 100
 
 struct Estudante {
-    char nome[100];
-    int ru; 
-} referencia;
-
-int ValidaNome() {
-    printf("\n->Escreva seu nome: ");
-    scanf("%s", referencia.nome);
-
-    return 0;
+    char nome[MAX_NOME];
+    int ru;
 };
 
-int ValidaRu() {
+void ValidaImpar(struct Estudante *referencia) {
+    setlocale(LC_ALL, "Portuguese");
 
-    return 0;
-};
+    if (referencia->ru % 2 == 0) {
+        wprintf(L"\n->O RU é par!");
+    }
+    else {
+        wprintf(L"\n->O RU é impar!");
+    }
+}
 
-int Constroi_Menu() {
+void ValidaNome(struct Estudante *referencia) {
+    printf("->Escreva seu nome: ");
+    scanf("%s", &referencia->nome);
+}
+
+void ValidaRu(struct Estudante *referencia) {
+    printf("->Digite seu RU: ");
+    scanf("%d", &referencia->ru);
+}
+
+void InverteNome(struct Estudante *referencia) {
+    #include <string.h>
+    strrev(referencia->nome);
+    printf("\n->Nome invertido: %s\n", referencia->nome);
+}
+
+void ConstroiMenu() {
     printf("******************************");
     printf("\n");
     printf("*");
@@ -35,14 +46,17 @@ int Constroi_Menu() {
     printf("         ");
     printf("*");
     printf("\n");
-    printf("******************************");
-
-    return 0;
-};
+    printf("******************************\n");
+}
 
 int main() {
-    Constroi_Menu();
-    ValidaNome();
+    struct Estudante referencia;
+
+    ConstroiMenu();
+    ValidaNome(&referencia);
+    ValidaRu(&referencia);
+    ValidaImpar(&referencia);
+    InverteNome(&referencia);
 
     return 0;
 }
