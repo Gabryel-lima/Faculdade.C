@@ -3,7 +3,7 @@
 #include <locale.h>
 #include <string.h>
 
-#define MAX_NOME 100
+#define MAX_NOME 99
 
 struct Estudante {
     char nome[MAX_NOME];
@@ -21,7 +21,7 @@ void ValidaImpar(struct Estudante *ref) {
 }
 
 void ValidaNome(struct Estudante *ref) {
-    printf("->Escreva seu nome: ");
+    printf("\n->Escreva seu nome: ");
     fgets(ref->nome, MAX_NOME, stdin);
 }
 
@@ -40,7 +40,9 @@ void InverteNome(struct Estudante *ref) {
 }
 
 void ConstroiMenu() {
-    printf("******************************");
+    for (size_t i = 0; i < 30; i++) {
+        printf("*");
+    }
     printf("\n");
     printf("*");
     printf("         ");
@@ -48,7 +50,9 @@ void ConstroiMenu() {
     printf("         ");
     printf("*");
     printf("\n");
-    printf("******************************\n");
+    for (size_t j = 0; j < 30; j++) {
+        printf("*");
+    }
 }
 
 void Run() {
