@@ -1,14 +1,12 @@
 
 #include <stdio.h>
-#include <locale.h>
-#include <string.h>
 #include <stdlib.h>
-
-#define NUM_MAX 99
+#include <locale.h>
 
 struct Registro {
-    char ru[NUM_MAX];
-    int num_digits;
+    char ru_string[100];
+    int num_digitos;
+    int *ru_digitos;
     int produto;
 };
 
@@ -28,36 +26,37 @@ void ConstroiMenu() {
     }
 }
 
-void ValidaRu(struct Registro *ref) {
-    printf("\n->Digite seu RU: ");
-    scanf("%s", &ref->ru[NUM_MAX]);
+void Ru(struct Registro *ref) {
+    printf("\nDigite o seu RU: "); 
+    scanf("%s", ref->ru_string);
+}
 
-    while (ref->ru[ref->num_digits] != '\0') {
-        ref->num_digits++;
+void QuantidadeDeDigitos(struct Registro *ref) {
+    ref->num_digitos = 0;
+    while (ref->ru_string[ref->num_digitos] != '\0') {
+        ref->num_digitos++;
     }
 }
 
-void VetorRU(struct Registro *ref) {
-    int *ru_digits = malloc(ref->num_digits * sizeof(int));
-    
-    for (int i = 0; i < ref->num_digits; i++) {
-        ref->ru[i] = ru_digits[i] - '0'; 
-    }
-}
+void Incremento(struct Registro *ref) {
+    ref->ru_digitos = malloc(ref->num_digitos * sizeof(int));
 
-void ProdutoDoVetor(struct Registro *ref) {
+    for (int i = 0; i < ref->num_digitos; i++) {
+        ref->ru_digitos[i] = ref->ru_string[i] - '0'; 
+    }
     ref->produto = 1;
-    for (int i = 0; i < ref->num_digits; i++) {
-        ref->produto *= ref->ru[i];
+    for (int j = 0; j < ref->num_digitos; j++) {
+        ref->produto *= ref->ru_digitos[j];
     }
 }
 
 void Resultado(struct Registro *ref) {
-    printf("Vetor de dígitos do RU: ");
-    for (int i = 0; i < ref->num_digits; i++) {
-        printf("%c ", ref->ru[i]);
+    printf("\nVetor de dígitos do RU: ");
+    for (int i = 0; i < ref->num_digitos; i++) {
+        printf("[%d]", ref->ru_digitos[i]);
     }
     printf("\nProduto dos dígitos: %d\n", ref->produto);
+    free(ref->ru_digitos);
 }
 
 void Run() {
@@ -65,9 +64,9 @@ void Run() {
     struct Registro referencia;
 
     ConstroiMenu();
-    ValidaRu(&referencia);
-    VetorRU(&referencia);
-    ProdutoDoVetor(&referencia);
+    Ru(&referencia);
+    QuantidadeDeDigitos(&referencia);
+    Incremento(&referencia);
     Resultado(&referencia);
 }
 
