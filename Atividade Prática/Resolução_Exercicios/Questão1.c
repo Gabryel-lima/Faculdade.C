@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <locale.h>
 #include <string.h>
+#include <conio.h>
 
 #define MAX_NOME 99
 
@@ -37,6 +38,7 @@ void InverteNome(struct Estudante *ref) {
     }
     strrev(ref->nome);
     printf("\n->Nome invertido: %s\n", ref->nome);
+    printf("\nPressione qualquer tecla para finalizar..."); getch();
 }
 
 void ConstroiMenu() {
