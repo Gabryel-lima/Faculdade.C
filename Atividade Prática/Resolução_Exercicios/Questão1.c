@@ -23,21 +23,21 @@ void ValidaImpar(struct Estudante *ref) {
 
 void ValidaNome(struct Estudante *ref) {
     printf("\n->Escreva seu nome: ");
-    fgets(ref->nome, MAX_NOME, stdin);
+    fgets((ref)->nome, MAX_NOME, stdin);
 }
 
 void ValidaRu(struct Estudante *ref) {
     printf("->Digite seu RU: ");
-    scanf("%d", &ref->ru);
+    scanf("%d", &(ref)->ru);
 }
 
 void InverteNome(struct Estudante *ref) {
-    size_t length = strlen(ref->nome);
-    if (length > 0 && ref->nome[length - 1] == '\n') {
-        ref->nome[length - 1] = '\0';
+    size_t length = strlen((ref)->nome);
+    if (length > 0 && (ref)->nome[length - 1] == '\n') {
+        (ref)->nome[length - 1] = '\0';
     }
-    strrev(ref->nome);
-    printf("\n->Nome invertido: %s\n", ref->nome);
+    strrev((ref)->nome);
+    printf("\n->Nome invertido: %s\n", (ref)->nome);
     printf("\nPressione qualquer tecla para finalizar..."); getch();
 }
 

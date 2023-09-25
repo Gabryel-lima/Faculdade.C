@@ -95,9 +95,9 @@ int main() {
         printf ("Origem ..: %s\n", ptrPas[i].origem);
         printf ("Destino .: %s\n", ptrPas[i].destino);
         printf ("Data de embarque: %d/%d/%d\n", ptrPas[i].dt.dia, 
-                                  ptrPas[i].dt.mes, ptrPas[i].dt.ano);
+                                            ptrPas[i].dt.mes, ptrPas[i].dt.ano);
         printf ("Hora de embarque: %d:%d\n", ptrPas[i].hh.hora,
-                                          ptrPas[i].hh.minuto);    
+                                            ptrPas[i].hh.minuto);    
         printf ("Portão: %s\n", ptrPas[i].portao);
     }    
     return(0);    
