@@ -20,6 +20,7 @@ struct perimetro {
 };
 
 void ConstroiMenu() {
+    printf("\n");
     for (size_t i = 0; i < 30; i++) {
         printf(">");
     }
@@ -36,31 +37,42 @@ void ConstroiMenu() {
 }
 
 void ValorLado(struct entrada *ref) {
-    printf("\nInsira o valor: ");
+    printf("\n\nInsira um valor: ");
     scanf("%f", &(ref)->inp);
 }
 
 void Calc_penta(float l, struct area *area, struct perimetro *perimetro) {
-    area->are = (5 * pow(l, 2)) / (4 * tan(M_PI / 5));
+    (area)->are = (5 * pow(l, 2)) / (4 * tan(M_PI / 5));
     (perimetro)->per = 5 * l;
 
     wprintf(L"\nÁrea: %.2lf\n", (area)->are);
-    wprintf(L"Perímetro: %2.lf\n", (perimetro)->per);
+    wprintf(L"Perímetro: %.2lf\n", (perimetro)->per);
     free((perimetro)->area);
 }
 
 void Run() {
-
-    setlocale(LC_ALL, "Portuguese");
-
+    
     struct entrada entrada;
-    struct area area;
-    struct perimetro perimetro;
-
     ConstroiMenu();
-    ValorLado(&entrada);
-    perimetro.area = malloc(sizeof(struct area));
-    Calc_penta((entrada).inp, &area, &perimetro);
+
+    do {
+        setlocale(LC_ALL, "Portuguese");
+
+        struct area area;
+        struct perimetro perimetro;
+
+        ValorLado(&entrada);
+
+        if ((entrada).inp != 0) {
+            (perimetro).area = malloc(sizeof(struct area));
+            Calc_penta((entrada).inp, &area, &perimetro);
+            printf("\nOu digite [0] para finalizar o programa: ");
+            }
+        else {
+            break;
+        }
+
+    } while(1);
 }
 
 int main() {
