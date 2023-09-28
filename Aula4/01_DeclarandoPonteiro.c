@@ -8,7 +8,7 @@ int main() {
     // & é operador de endereco sendo assim passa o endereco do AGE 
     // para o Conteudo (operador *) do ponteiro (idade);
     // a variavel idade tem o seu endereco e neste endereco está o endereco da variavel AGE.
- 
+
     *idade = age;
     // Estou pegando o valor do AGE (50) e dizendo para o ponteiro (idade) pegar esse valor
     // e atualizar no endereço que ele tem que é o endereço do próprio AGE. Ou seja, seria
