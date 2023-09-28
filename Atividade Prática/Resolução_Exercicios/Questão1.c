@@ -73,28 +73,3 @@ int main() {
 
     return 0;
 }
-
-/**
- * Inverte o nome de um estudante e imprime o resultado.
- *
- * Esta função inverte o nome armazenado na estrutura Estudante referenciada
- * por 'ref' e imprime o nome invertido no console.
- *
- * //@param ref Um ponteiro para a estrutura Estudante contendo o nome a ser invertido.
- */
-//void InverteNome(struct Estudante *ref) {
-    // Calcula o comprimento atual da string nome.
-    //size_t length = strlen(ref->nome);
-    
-    // Verifica se o último caractere é um '\n' (caractere de nova linha).
-    //if (length > 0 && ref->nome[length - 1] == '\n') {
-        // Se for, substitui o '\n' por '\0' (caractere nulo) para remover o '\n'.
-        //ref->nome[length - 1] = '\0';
-    //}
-    
-    // Chama a função strrev para inverter a string nome.
-    //strrev(ref->nome);
-    
-    // Imprime o nome invertido no console.
-    //printf("\n->Nome invertido: %s\n", ref->nome);
-//}

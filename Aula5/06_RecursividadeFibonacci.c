@@ -15,7 +15,7 @@ int main() {
     printf("\n\n");
     return(0);
 }
- 
+
 int fibonacci(int numeroAnterior, int numero, int limite) {
     static int i = 1;
     int proximoNumero;
@@ -28,6 +28,6 @@ int fibonacci(int numeroAnterior, int numero, int limite) {
         printf("%d  ", proximoNumero);
         i++;
         fibonacci(numeroAnterior, numero, limite);
-   }
-   return (0);
+    }
+    return (0);
 }
