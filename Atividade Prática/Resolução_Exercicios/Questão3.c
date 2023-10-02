@@ -69,6 +69,7 @@ void Run() {
             printf("\nOu digite [0] para finalizar o programa: ");
             }
         else {
+            printf("\nPrograma finalizado...\n");
             break;
         }
 
