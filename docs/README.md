@@ -23,7 +23,11 @@ Este repositório contém projetos e exercícios desenvolvidos em linguagem C du
     ```bash
     gcc -o programa principal.c
     ```
-3. Execute o programa:
+3. Ou utilize o `Makefile` para compilar automaticamente:
+    ```bash
+    make
+    ```
+4. Execute o programa:
     ```bash
     ./programa
     ```
