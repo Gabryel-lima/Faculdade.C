@@ -30,3 +30,6 @@
 # System files
 .DS_Store
 Thumbs.db
+# Executables without extensions
+*/programa
+[A-Za-z]*
