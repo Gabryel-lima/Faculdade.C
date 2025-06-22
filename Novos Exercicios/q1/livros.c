@@ -9,12 +9,22 @@ permitidos. Em seguida, exiba as informações dos livros cadastrados. */
  * — Título: 100 caracteres máx.   (buffer de 101 ⇒ 100 + '\0')
  * — Autor :  50 caracteres máx.   (buffer de 51  ⇒  50 + '\0')
  *
- * Compilar:  gcc -std=c99 -Wall -Wextra -O2 livros.c -o livros
- */
+ * Compilar apenas o binário:  gcc -std=c99 -Wall -Wextra -O2 livros.c utils/readline.c -o livros
+ * Compilar e separar outros dados:
+
+ * gcc -std=c99 -Wall -O2 -save-temps=obj livros.c utils/readline.c -o livros
+ * -std=c99: Use the C99 standard.
+ * -Wall: Enable most compiler warnings.
+ * -O2: Optimize the code for speed.
+ * -save-temps=obj: Save intermediate files (like preprocessed source and assembly) in the current directory with `.i`, `.s`, and `.o` extensions.
+ * -o livros: Output executable named `livros`.
+ * livros.c: Source file to compile.
+*/
 
 #include <stdio.h> // header padrão de input e output
 #include <locale.h> // hearder que define um conjunto de convenções culturais usadas para formatação de texto, números, datas, ordenação alfabética, etc.
 #include <string.h> // funções para manipulações de strings de C em Unix/linux
+#include "./utils/readline.h"
 
 #define MAX_LIVROS 3
 #define MAX_TITULO 100
@@ -26,22 +36,13 @@ typedef struct livros {
     int ano;
 } Livros;
 
-/*----------------------------------------------------------*/
-/* Função utilitária: lê uma linha com segurança,           *
- * removendo o '\n' inserido por fgets, se existir.         */
-static void read_line(char *dest, size_t lenght) {
-    if(fgets(dest, (int)lenght, stdin) == NULL) {
-        dest[0] = '\0'; /* EOF inesperado ⟶ string vazia */
-        return;
-    }
-    dest[strcspn(dest, "\n")] = '\0'; 
-}
-
-/*----------------------------------------------------------*/
-
 int main(void) {
+    // Salva guarda para o setlocale()
+    if (!setlocale(LC_ALL, "pt_BR.UTF-8")) {
+        fputs("Locale pt_BR.UTF-8 indisponível\n", stderr);
+    }
 
-    Livros livros[MAX_LIVROS] = {0};
+    Livros livros[MAX_LIVROS] = {0}; // Iniciando com o index 0
 
     puts("+++ Cadastro dos Livros +++");
     for (int i = 0; i < MAX_LIVROS; i++) {
