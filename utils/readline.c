@@ -1,6 +1,6 @@
-#include "readline.h"
 #include <stdio.h>          /* fgets  */
 #include <string.h>         /* strcspn */
+#include "readline.h" // my header
 
 /*----------------------------------------------------------*/
 /* Função utilitária: lê uma linha com segurança,           *

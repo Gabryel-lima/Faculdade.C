@@ -11,8 +11,9 @@ funcionário com o mesmo cargo e, se houver, exibir os detalhes desses funcioná
 #include <stdio.h> // hearder de input e output
 #include <locale.h> // hearder de conjunto de convenções semânticas
 #include <string.h> // funções para manipulação de strings
+#include "cadastros.h" // my hearder
 
-#include "../q1/utils/readline.h" // lê uma string com segurança
+//#include "utils/readline.h" // lê uma string com segurança
 
 #define MAX_FUNCIONARIOS 4
 #define MAX_NOME_STR 50
@@ -28,15 +29,28 @@ typedef struct cadastros {
     double salario;
 } Cadastros; // alias
 
+void cadastrarFuncionario(int opcao) {
+    for (int i = 0; i <= MAX_FUNCIONARIOS; i++) {
+        printf("\nVocê selecionou a opção cadastro, forneça um nome: ");
+        scanf(" %i", &opcao);
+    }
+}
+
+void totalFuncionario() {
+    printf("\n(%i) funcionários", MAX_FUNCIONARIOS);
+}
+
 int main(void) {
     // Salva guarda para o setlocale()
     if (!setlocale(LC_ALL, "pt_BR.UTF-8")) {
         fputs("Locale pt_BR.UTF-8 indisponível\n", stderr);
     }
 
-    Cadastros cadastros[MAX_FUNCIONARIOS] = {0};
+    // Declaração da struct
+    Cadastros cadastros[MAX_FUNCIONARIOS] = {0}; // idx em 0
     int opcao = 0;
 
+    // O do while serve bem neste caso com o switch
     do {
         printf("\n--- Menu de opções --");
         printf("\n[1] Cadastrar funcionários");     
@@ -47,7 +61,7 @@ int main(void) {
         scanf(" %i", &opcao);
         switch (opcao) {
             case 1:
-                cadastrarFuncionario();
+                cadastrarFuncionario(opcao);
                 break;
             case 2:
                 totalFuncionario();
@@ -56,17 +70,8 @@ int main(void) {
                 printf("Opção inválida! ");
                 break;
         }
-    } while (opcao != 4);
-}
+    } while (opcao != 4); // Caso for diferente de 4 continua true.
 
-void cadastrarFuncionario() {
-    for (int i = 0; i <= MAX_FUNCIONARIOS; i++) {
-        printf("\nVocê selecionou a opção cadastro, forneça um nome: ");
-        scanf(" %i", &opcao);
-    }
-}
-
-void totalFuncionario() {
-    printf("\n(%i) funcionários", MAX_FUNCIONARIOS);
+    return 0;
 }
 
