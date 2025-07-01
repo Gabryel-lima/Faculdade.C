@@ -29,6 +29,14 @@ void estatisticas(const float *v, size_t n, float *media, float *minimo, float *
 }
 
 int main(void) {
+    /*
+    Função principal do programa.
+    - setlocale: define o locale do programa para garantir que o programa funcione corretamente em qualquer sistema operacional.
+    - printf: exibe uma mensagem de boas-vindas.
+    - scanf: lê o número de leituras.
+    - malloc: aloca memória para o vetor de leituras.
+    - free: libera a memória alocada para o vetor de leituras.
+    */
 
     // Salva guarda para o setlocale() para garantir que o programa funcione corretamente em qualquer sistema operacional.
     if (!setlocale(LC_ALL, "pt_BR.UTF-8")) {
