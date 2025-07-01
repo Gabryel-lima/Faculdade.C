@@ -47,12 +47,12 @@ int main(void) {
 
     char frase[100]; // Variável para armazenar a frase do usuário.
 
-    printf("\n Digite uma frase {máx. 100 char}: ");
+    printf("\nDigite uma frase {máx. 100 char}: ");
     if (fgets(frase, sizeof frase, stdin)) { // Lê a frase do usuário.
         frase[strcspn(frase, "\n")] = '\0'; // Remove o caractere de nova linha da frase.
 
         encrypt(frase); // Criptografa a frase.
-        printf("Frase criptografada: %s\n", frase); // Exibe a frase criptografada.
+        printf("\nFrase criptografada: %s\n\n", frase); // Exibe a frase criptografada.
     }
 
     return 0;
