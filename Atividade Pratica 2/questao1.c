@@ -14,15 +14,15 @@ int main(void) {
     - inercia: momento de inércia.
     */
 
+    // Salva guarda para o setlocale() para garantir que o programa funcione corretamente em qualquer sistema operacional.
+    if (!setlocale(LC_ALL, "pt_BR.UTF-8")) {
+        fputs("Locale pt_BR.UTF-8 indisponivel\n", stderr);
+    }
+
     printf("\n+++ Questão 1 +++\n");
 
     int largura, altura; // Variáveis para armazenar a largura e altura da viga.
     float transversal, inercia; // Variáveis para armazenar a área da seção transversal e o momento de inércia.
-
-    // Salva guarda para o setlocale() para garantir que o programa funcione corretamente em qualquer sistema operacional.
-    if (!setlocale(LC_ALL, "pt_BR.UTF-8")) {
-        fputs("Locale pt_BR.UTF-8 indisponível\n", stderr);
-    }
 
     // Apenas garantindo que a entrada seja um número inteiro.
     printf("\nDigite a largura (cm): "); // Solicita a largura da viga.
